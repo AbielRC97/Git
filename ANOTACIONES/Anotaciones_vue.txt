@@ -1,0 +1,15 @@
+1.- npm install -g @vue/cli
+2.- Ejecutar CMD vue add typescript o vue add vue-next
+3.- Instalar pug js en vue  
+	npm i --save @types/pug 
+	npm install -D pug-plain-loader pug
+4.- Instalar Bootstrap
+	npm i --save bootstrap bootstrap-vue-3
+	En main.ts 
+		import BootstrapVue from 'bootstrap-vue-3'
+		import 'bootstrap/dist/css/bootstrap.min.css'
+5.- Instalar Vuetify
+	npm install @nuxtjs/vuetify -D
+	npm install sass@~1.32 sass-loader deepmerge -D
+	vue add vuetify
+6.- vue router npm i vue-router

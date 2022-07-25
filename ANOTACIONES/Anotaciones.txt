@@ -1,0 +1,183 @@
+CREACION DE BD:
+	* TRANSACCCIONAL -> BdTtest
+	* DATA WAREHOUSE -> BdDwtest
+
+-----------------------------------------------------------------------------------
+
+CREACION DE TABLAS:
+	* XXDtablaRegistroDetallados
+	* XXCtablaCatalogo
+	* XXRtablaRelacionMuchos
+	* XXHtablaHistorico
+XX -> MODULOS ERP A TRABAJAR
+
+-----------------------------------------------------------------------------------
+
+CREACION DE CAMPOS:
+	* NombreDescriptivoId
+	* NombreCampo
+- No caracteres especiales incluidos los _ y registro detallado de atributos.
+
+-----------------------------------------------------------------------------------
+
+CREACION DE SP:
+	* SpXXStoreProcedure
+XX -> Modulo o Tabla a trabajar
+
+-----------------------------------------------------------------------------------
+
+CREACION DE FUNCIONES DE TABLA:
+	*  FnXXFuncionTabla
+XX -> Modulo o tabla a trabajar 
+
+-----------------------------------------------------------------------------------
+
+CREACION DE VISTAS:
+	* VXXVista
+XX -> Modulo o Tabla a trabjar
+-----------------------------------------------------------------------------------
+
+CREACION DE TRIGGERS:
+	* TrgTrigger
+
+-----------------------------------------------------------------------------------
+
+CREACION DE LLAVER PRIMARIA CON CONSTRAIN:
+	* PK_XXDtablaCatalogo_IdXXDtablaCatalogo
+
+ALTER TABLE XXDtablaCatalogo
+ADD CONSTRAINT PK_XXDtablaCatalogo_IdXXDtablaCatalogo
+PRIMARY KET CLUSTERED(IdXXDtablaCatalogo)
+
+-----------------------------------------------------------------------------------
+
+CREACION DE LLAVE FORANEA
+	* FK_XXHtablaHistorico_IdXXDtablaCatalogo
+
+ALTER TABLE XXHtablaHistorico WITH CHECK
+ADD CONSTRAINT FK_XXHtablaHistorico_IdXXDtablaCatalogo
+FOREIGN KEY (IdXXDtablaCatalogo)
+REFERENCES XXCtablaCatalogo IdXXCtablaCatalogo
+
+ALTER TABLE XXHtablaHistorico CHECK 
+CONSTRAINT FK_XXHtablaHistorico_IdXXDtablaCatalogo
+
+-----------------------------------------------------------------------------------
+
+VALORES POR DEFECTO:
+	* DF_XXDtablaRegistroDetallados_FechaSesion
+
+ALTER TABLE XXDtablaRegistroDetallados
+ADD CONSTRAINT DF_XXDtablaRegistroDetallados_FechaSesion
+DEFAULT (GETDATE()) FOR FechaSesion
+
+-----------------------------------------------------------------------------------
+
+CREACION DE CHECK 
+	* CH_XXDtablaRegistroDetallados_Telefono
+ALTER TABLE XXDtablaRegistroDetallados
+ADD CONSTRAINT CH_XXDtablaRegistroDetallados_Telefono
+CHECK ((ISNUMERIC(Telefono) AND LEN(Telefono) >= (7)))
+
+ALTER TABLE XXDtablaRegistroDetallados CHECK
+CONSTRAINT CH_XXDtablaRegistroDetallados_Telefono
+
+-----------------------------------------------------------------------------------
+
+CREACION DE INDICES UNICOS
+	* UQ_XXHIndiceUnico_IdXXHIndiceUnico
+ALTER TABLE XXHIndicesUnicos
+ADD CONSTRAINT UQ_XXHIndiceUnico_IdXXHIndiceUnico
+UNIQUE NONCLUSTERED (IdXXHIndiceUnico)
+
+-----------------------------------------------------------------------------------
+
+CREACION DE INDICES COMPUESTO O DE BUSQUEDA
+	* Ind_XXRIndiceBusqueda_Nombre
+
+CREATE INDEX Ind_XXRIndiceBusqueda_Nombre
+ON XXRIndiceBusqueda(Nombre)
+
+-----------------------------------------------------------------------------------
+
+DESTRUCCION DE OBJECTOS SQL
+
+ELIMINAR STORE PROCEDURE:
+
+IF OBJECT_ID('dbo.SpXXStoreProcedure')
+  DROP PROCEDURE bdo.SpXXStoreProcedure
+GO
+
+ELIMINAR FUNCIONES:
+
+IF OBJECT_ID('dbo.FnXXFuncionTabla')
+  DROP FUNCTION dbo.FnXXFuncionTabla
+GO
+
+ELIMINAR VISTAS:
+
+IF OBJECT_ID('dbo.VXXVista')
+  DROP VIEW dbo.VXXVista
+GO
+
+ELIMINAR TRIGGERS:
+
+IF OBJECT_ID('dbo.TrgTrigger')
+  DROP TRIGGER dbo.TrgTrigger
+GO
+
+-----------------------------------------------------------------------------------
+CREACION DE TABLAS TEMPORALES
+
+IF EXISTS(
+ SELECT NAME
+ FROM TempDB.SYS.SYSOBJECTS
+ WHERE Id = OBJECT_ID('TempDB.dbo.#TMP1')
+ AND TYPE = 'U'
+)
+ DROP TABLE #TMP1
+
+-----------------------------------------------------------------------------------
+USO DE NOLOCK EN CONSULTAS
+
+SELECT
+	C.IdXXCtablaCatalogo,
+	H.Descripion,
+	C.FechaInicio
+FROM
+	XXCtablaCatalogo C WITH(NOLOCK)
+	INNER JOIN XXHtablaHistorico H WITH(NOLOCK)
+	ON C.IdXXCtablaCatalogo = H.IdXXCtablaCatalogo
+
+-----------------------------------------------------------------------------------
+USO DE ROWLOCK ACTUALIZACION DE DATOS
+UPDATE Cliente WITH(ROWLOCK)
+SET
+	Estatus = 0
+WHERE
+	IdCliente = 123456
+
+-----------------------------------------------------------------------------------
+FORMATO PARA OBJECTOS SQL
+
+==========================================================================================================
+--NOMBRE: 'NOMBRE DEL OBJECTO'
+--AUTOR: 'NOMBRE COMPLETO DEL AUTOR'
+--FECHA CREACION: 'DD/MM/AAAA'
+--DESARROLLO: 'NOMBR DEL DESARROLLO AL QUE PERTENCE'
+--MODULO: 'MODULO AL QUE PERTENCE'
+--DESCRIPCION 'EXPLICACION COMPLETA DE FUNCIONALIDAD Y OBJECTO, PARAMETROSDE ENTRADA SALIDAS Y EJEMPLOS'
+==========================================================================================================
+
+==========================================================================================================
+--FECHA. AUTOR Y DESCRIPCION DE LA MODIFICACION
+==========================================================================================================
+
+
+
+
+
+
+
+
+
