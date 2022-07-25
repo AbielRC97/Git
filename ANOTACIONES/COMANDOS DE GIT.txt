@@ -9,6 +9,7 @@ GIT HELP COMMIT
 GIT CONFIG --GLOBAL USER.NAME "ABIELRC"
 GIT CONFIG --GLOBAL USER.NAME "IA.ROSALES@MAVI.MX"
 GIT CONFIG --GLOBAL -E
+git config --global pull.ff only
 git init -> INICIALIZACION DE PROYECTO
 git status -> ESTATUS DEL REPOSITORIO 
 git add . | git add #nameFile -> agregar elementos para realizar el Stach
@@ -45,7 +46,7 @@ git stash -> guardar cambios sin hacer commit
 git stash list -> lista de cambios guardados
 git stash pop -> recupera el ultimo cambio guardado
 git checkout -- #nameRama -> desahacer cambios de un archivo especifico
-
-
+git config pull.ff only
+git config pull.rebase true
 
 
