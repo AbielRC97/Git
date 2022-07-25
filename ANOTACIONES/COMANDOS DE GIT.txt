@@ -47,6 +47,6 @@ git stash list -> lista de cambios guardados
 git stash pop -> recupera el ultimo cambio guardado
 git checkout -- #nameRama -> desahacer cambios de un archivo especifico
 git config pull.ff only
-
+git config pull.rebase true
 
 
