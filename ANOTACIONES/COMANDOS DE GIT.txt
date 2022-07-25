@@ -33,7 +33,7 @@ git reflog -> historial de commits y reset
 git reset --hard #NumCommit -> regresar a un reset por numero de identificador
 git rm ideas.md -> Eliminar Archivo con git
 git mv .\planes.md ideas.md -> renombrar archivos
-
+git push --set-upstream origin rama-01
 
 RAMAS EN GIT 
 git branch aby-villanos -> creacion de rama
