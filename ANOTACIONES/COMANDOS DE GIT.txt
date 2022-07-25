@@ -1,0 +1,51 @@
+-- "PALABRAS COMPLETAS"
+- "PALABRAS ABREVIADAS"
+.gitkeep -> para carpetas vacias
+
+COMANDOS GIT
+
+GIT HELP -> INFORMACION GENERAL
+GIT HELP COMMIT 
+GIT CONFIG --GLOBAL USER.NAME "ABIELRC"
+GIT CONFIG --GLOBAL USER.NAME "IA.ROSALES@MAVI.MX"
+GIT CONFIG --GLOBAL -E
+git init -> INICIALIZACION DE PROYECTO
+git status -> ESTATUS DEL REPOSITORIO 
+git add . | git add #nameFile -> agregar elementos para realizar el Stach
+git resert .#nameFile -> remover elementos en el Stach
+git commit -m "Start Proyect"
+git config core.autocrlf true -> caracteres especiales
+git checkout -- . -> Reconstruye el repositorio como estaba el proyecto
+git branch -> copia de repositorio o rama
+git branch -m master main -> reenombrar ramas
+git config --global init.defaultBranch main -> Asignar por default nombre de main
+git add *.html | js/*.js -> Agregar al STACH de acuerdo al comodin
+git add Carpeta/ -> Agrgear al stach todo lo de una carpeta
+git config --global alias.s "status --short" -> comandos custom
+
+git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all" -> log con formato
+git diff --staged -> ver los cambios del staged
+git diff ver los cambios depues de guardar
+git reset --soft HEAD^  -> regersar un un commit anterior
+git commit --amend -m "Instalaciones" -> cambiar nombre del commit
+git reflog -> historial de commits y reset
+git reset --hard #NumCommit -> regresar a un reset por numero de identificador
+git rm ideas.md -> Eliminar Archivo con git
+git mv .\planes.md ideas.md -> renombrar archivos
+
+
+RAMAS EN GIT 
+git branch aby-villanos -> creacion de rama
+git branch -d aby-villanos -> eliminar una rama
+git branch -d aby-villanos -f -> forzar la eliminacion de rama 
+git checkout -b rama-villanos
+git tag -a v0.1.0 8f8404b -m "Version Alpha App" -> Crear Tags
+git show v0.1.0 -> Ver el Tags
+git stash -> guardar cambios sin hacer commit
+git stash list -> lista de cambios guardados
+git stash pop -> recupera el ultimo cambio guardado
+git checkout -- #nameRama -> desahacer cambios de un archivo especifico
+
+
+
+

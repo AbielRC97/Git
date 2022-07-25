@@ -1,0 +1,3 @@
+# ANOTACIONES
+1.- COMANDOS DE GIT
+2.- SQL optimizacion
