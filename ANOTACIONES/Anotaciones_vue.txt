@@ -13,3 +13,6 @@
 	npm install sass@~1.32 sass-loader deepmerge -D
 	vue add vuetify
 6.- vue router npm i vue-router
+
+Opcional
+* npm run lint -- --fix  
